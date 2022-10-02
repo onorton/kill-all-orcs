@@ -56,15 +56,7 @@ public class ProjectileSpawner : MonoBehaviour
 
     public void SpawnProjectile(Vector3 target)
     {
-        // If in the middle of reloading but can still fire, stop reloading
-        if (!_reloadCompleted && CurrentNumberOfShots > 0)
-        {
-            if (_isPlayer)
-            {
-                _eventBus.PlayerInterruptedReloadingEvent();
-            }
-            _reloadCompleted = true;
-        }
+        InterruptReload();
 
         // Can't fire yet
         if (_timeUntilNextShotSeconds > 0.0f || !_reloadCompleted)
@@ -108,6 +100,19 @@ public class ProjectileSpawner : MonoBehaviour
             {
                 _eventBus.PlayerReloadingEvent(_reloadTimeSeconds);
             }
+        }
+    }
+
+    public void InterruptReload()
+    {
+        // If in the middle of reloading but can still fire, stop reloading
+        if (!_reloadCompleted && CurrentNumberOfShots > 0)
+        {
+            if (_isPlayer)
+            {
+                _eventBus.PlayerInterruptedReloadingEvent();
+            }
+            _reloadCompleted = true;
         }
     }
 

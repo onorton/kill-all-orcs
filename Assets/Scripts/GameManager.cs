@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        Cursor.visible = false;
         Time.timeScale = 1;
     }
 

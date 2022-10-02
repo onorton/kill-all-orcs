@@ -12,8 +12,6 @@ public class AimingCursor : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
-
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
 

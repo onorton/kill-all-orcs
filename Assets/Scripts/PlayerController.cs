@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                _weapons.GetChild(i).GetComponent<ProjectileSpawner>().InterruptReload();
                 _weapons.GetChild(i).GetComponent<ProjectileSpawner>().ResetReloading();
                 _weapons.GetChild(i).gameObject.SetActive(false);
             }
